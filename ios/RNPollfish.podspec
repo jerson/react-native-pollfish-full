@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency "React"
-  #s.dependency "others"
+  s.dependency "Pollfish", "~> 4.3.5"
 
 end
 
