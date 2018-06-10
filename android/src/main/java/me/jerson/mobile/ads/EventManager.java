@@ -15,15 +15,11 @@ public class EventManager {
     }
 
     public final void send(String event, @Nullable WritableMap params) {
-        this.reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(event, params);
+        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(event, params);
     }
 
     public final void send(String event) {
-        this.reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(event, null);
+        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(event, null);
     }
 
 }

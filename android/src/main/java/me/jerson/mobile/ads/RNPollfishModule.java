@@ -25,7 +25,6 @@ import com.pollfish.interfaces.PollfishUserNotEligibleListener;
 import com.pollfish.main.PollFish;
 import com.pollfish.main.PollFish.ParamsBuilder;
 
-
 public class RNPollfishModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
     private static final String TAG = "RNPollfish";
     private EventManager eventManager;
@@ -44,15 +43,15 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
 
     @Override
     public void onHostResume() {
-//        if (params != null) {
-//            new Handler(Looper.getMainLooper()).post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Log.d(TAG, ">> Initializing Pollfish");
-//                    PollFish.initWith(getCurrentActivity(), params);
-//                }
-//            });
-//        }
+        // if (params != null) {
+        // new Handler(Looper.getMainLooper()).post(new Runnable() {
+        // @Override
+        // public void run() {
+        // Log.d(TAG, ">> Initializing Pollfish");
+        // PollFish.initWith(getCurrentActivity(), params);
+        // }
+        // });
+        // }
     }
 
     @Override
@@ -67,16 +66,16 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
 
     private SurveyFormat parseFormat(String name) {
         switch (name) {
-            case "BASIC":
-                return SurveyFormat.BASIC;
-            case "PLAYFUL":
-                return SurveyFormat.PLAYFUL;
-            case "THIRD_PARTY":
-                return SurveyFormat.THIRD_PARTY;
-            case "RANDOM":
-                return SurveyFormat.RANDOM;
-            default:
-                return SurveyFormat.RANDOM;
+        case "BASIC":
+            return SurveyFormat.BASIC;
+        case "PLAYFUL":
+            return SurveyFormat.PLAYFUL;
+        case "THIRD_PARTY":
+            return SurveyFormat.THIRD_PARTY;
+        case "RANDOM":
+            return SurveyFormat.RANDOM;
+        default:
+            return SurveyFormat.RANDOM;
         }
     }
 
@@ -86,15 +85,17 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
     }
 
     @ReactMethod
-    public void initialize(final String apiKey,
-                           final boolean debugMode,
-                           final boolean autoMode,
-                           final String format,
-                           final String uuid) {
+    public void initialize(final String apiKey, final boolean debugMode, final boolean autoMode, final String format,
+            final String uuid) {
 
-        params = new ParamsBuilder(apiKey)
-                .surveyFormat(this.parseFormat(format))
-                .releaseMode(!debugMode) // Due to inconsitency with iOS, we negate whatever is passed in for production
+        params = new ParamsBuilder(apiKey).surveyFormat(this.parseFormat(format)).releaseMode(!debugMode) // Due to
+                                                                                                          // inconsitency
+                                                                                                          // with iOS,
+                                                                                                          // we negate
+                                                                                                          // whatever is
+                                                                                                          // passed in
+                                                                                                          // for
+                                                                                                          // production
                 .customMode(autoMode) // Set true to avoid auto-popup behavior
                 .requestUUID(uuid) // Unique user identifier, passed back in the callback
                 .pollfishSurveyReceivedListener(new PollfishSurveyReceivedListener() {
@@ -105,14 +106,12 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
                         map.putInt("surveyPrice", surveyPrice);
                         eventManager.send("surveyReceived", map);
                     }
-                })
-                .pollfishSurveyNotAvailableListener(new PollfishSurveyNotAvailableListener() {
+                }).pollfishSurveyNotAvailableListener(new PollfishSurveyNotAvailableListener() {
                     @Override
                     public void onPollfishSurveyNotAvailable() {
                         eventManager.send("surveyNotAvailable");
                     }
-                })
-                .pollfishSurveyCompletedListener(new PollfishSurveyCompletedListener() {
+                }).pollfishSurveyCompletedListener(new PollfishSurveyCompletedListener() {
                     @Override
                     public void onPollfishSurveyCompleted(final boolean playfulSurvey, final int surveyPrice) {
                         WritableMap map = new WritableNativeMap();
@@ -120,26 +119,22 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
                         map.putInt("surveyPrice", surveyPrice);
                         eventManager.send("surveyCompleted", map);
                     }
-                })
-                .pollfishUserNotEligibleListener(new PollfishUserNotEligibleListener() {
+                }).pollfishUserNotEligibleListener(new PollfishUserNotEligibleListener() {
                     @Override
                     public void onUserNotEligible() {
                         eventManager.send("userNotEligible");
                     }
-                })
-                .pollfishOpenedListener(new PollfishOpenedListener() {
+                }).pollfishOpenedListener(new PollfishOpenedListener() {
                     @Override
                     public void onPollfishOpened() {
                         eventManager.send("surveyOpened");
                     }
-                })
-                .pollfishClosedListener(new PollfishClosedListener() {
+                }).pollfishClosedListener(new PollfishClosedListener() {
                     @Override
                     public void onPollfishClosed() {
                         eventManager.send("surveyClosed");
                     }
-                })
-                .build();
+                }).build();
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -148,7 +143,6 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
                 PollFish.initWith(getCurrentActivity(), params);
             }
         });
-
 
     }
 
@@ -173,8 +167,8 @@ public class RNPollfishModule extends ReactContextBaseJavaModule implements Life
     }
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {
-        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
+        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName,
+                params);
     }
-
 
 }

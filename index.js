@@ -12,12 +12,27 @@ export default class Pollfish {
     userNotEligible: new Map(),
     surveyNotAvailable: new Map(),
     surveyOpened: new Map(),
-    surveyClosed: new Map(),
+    surveyClosed: new Map()
   };
 
-  static initialize(key,  releaseMode, customMode, format, userId) {
-    __DEV__ && console.debug(TAG, "initialize", key,  releaseMode, customMode, format, userId);
-    return RNPollfish.initialize(key, releaseMode, customMode, format||'RANDOM', userId);
+  static initialize(key, releaseMode, customMode, format, userId) {
+    __DEV__ &&
+      console.debug(
+        TAG,
+        "initialize",
+        key,
+        releaseMode,
+        customMode,
+        format,
+        userId
+      );
+    return RNPollfish.initialize(
+      key,
+      releaseMode,
+      customMode,
+      format || "RANDOM",
+      userId
+    );
   }
 
   static show() {
@@ -35,13 +50,13 @@ export default class Pollfish {
     return RNPollfish.destroy();
   }
 
-
   static addEventListener(type, handler) {
     if (this.eventHandlers[type]) {
-      this.emitter && this.eventHandlers[type].set(
-        handler,
-        this.emitter.addListener(type, handler)
-      );
+      this.emitter &&
+        this.eventHandlers[type].set(
+          handler,
+          this.emitter.addListener(type, handler)
+        );
     } else {
       console.warn(`Event with type ${type} does not exist.`);
     }
@@ -53,7 +68,7 @@ export default class Pollfish {
     }
     this.eventHandlers[type].get(handler).remove();
     this.eventHandlers[type].delete(handler);
-  } 
+  }
 
   static removeAllListeners() {
     let names = Object.keys(eventHandlers);
