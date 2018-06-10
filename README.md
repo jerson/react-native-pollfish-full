@@ -19,7 +19,8 @@ Pollfish support for **Android** and **iOS**
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2. Go to `node_modules` ➜ `react-native-pollfish-full` and add `RNPollfish.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libRNPollfish.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+4. Go to `Podfile` and add `"Pollfish", "~> 4.3.5"` 
+5. Run your project (`Cmd+R`)<
 
 #### Android
 
