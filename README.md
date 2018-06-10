@@ -41,7 +41,6 @@ Pollfish support for **Android** and **iOS**
 ```javascript
 import Pollfish from 'react-native-pollfish-full';
 
-
   eventHandlers = [
     surveyReceived,
     surveyCompleted,
