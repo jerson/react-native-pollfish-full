@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "jeral17@gmail.com" }
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/jerson/react-native-pollfish.git", :tag => "master" }
+  s.source       = { :git => "https://github.com/jerson/react-native-pollfish-full.git", :tag => "master" }
   s.source_files  = "RNPollfish/**/*.{h,m}"
   s.requires_arc = true
 
