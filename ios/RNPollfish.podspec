@@ -4,9 +4,9 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.summary      = "RNPollfish"
   s.description  = <<-DESC
-                  RNPollfish
+                  Pollfish support for **Android** and **iOS**
                    DESC
-  s.homepage     = ""
+  s.homepage     = "https://github.com/jerson/react-native-pollfish-full"
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "jeral17@gmail.com" }
