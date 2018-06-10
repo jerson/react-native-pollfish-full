@@ -1,7 +1,7 @@
 
 # react-native-pollfish-full
 
-Pollfish support for **Android** and comming soon to **iOS**
+Pollfish support for **Android** and **iOS**
 
 ## Getting started
 
