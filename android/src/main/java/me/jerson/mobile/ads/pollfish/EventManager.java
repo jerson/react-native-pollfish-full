@@ -1,4 +1,4 @@
-package me.jerson.mobile.ads;
+package me.jerson.mobile.ads.pollfish;
 
 import android.support.annotation.Nullable;
 

@@ -1,5 +1,5 @@
 
-package me.jerson.mobile.ads;
+package me.jerson.mobile.ads.pollfish;
 
 import java.util.Arrays;
 import java.util.Collections;
